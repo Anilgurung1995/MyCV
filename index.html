@@ -3,590 +3,190 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Anil Gurung – Senior Beverage Specialist & Barista Supervisor with 7+ years of experience crafting exceptional coffee experiences in Dubai's premium hospitality venues.">
-<meta name="keywords" content="Anil Gurung, barista, beverage specialist, coffee, latte art, Dubai, hospitality">
+<meta name="description" content="Anil Gurung – Senior Beverage Specialist & Barista Supervisor with 8+ years of experience crafting exceptional coffee, wine, and beverage experiences.">
+<meta name="keywords" content="Anil Gurung, barista, beverage specialist, sommelier, coffee, wine, Dubai, hospitality, Nepal">
 <title>Anil Gurung | Beverage Specialist & Barista</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Archivo:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   :root {
-    --cream: #F5EFE6;
-    --espresso: #1A0F08;
-    --roast: #2D1810;
-    --caramel: #C8843C;
-    --latte: #D4A574;
-    --foam: #FAF6F0;
-    --steam: #E8DDD0;
-    --bark: #6B3D22;
-    --gold: #B8972A;
-    --text: #2A1A10;
-    --muted: #7A6255;
+    --cream: #F5EFE6; --espresso: #1A0F08; --roast: #2D1810;
+    --caramel: #C8843C; --latte: #D4A574; --foam: #FAF6F0;
+    --steam: #E8DDD0; --bark: #6B3D22; --gold: #B8972A;
+    --text: #2A1A10; --muted: #7A6255;
   }
-
   html { scroll-behavior: smooth; }
+  body { font-family: 'Archivo', sans-serif; background: var(--espresso); color: var(--cream); overflow-x: hidden; cursor: none; }
 
-  body {
-    font-family: 'Archivo', sans-serif;
-    background: var(--espresso);
-    color: var(--cream);
-    overflow-x: hidden;
-    cursor: none;
-  }
+  .cursor { width: 10px; height: 10px; background: var(--caramel); border-radius: 50%; position: fixed; top:0;left:0; pointer-events:none; z-index:9999; transition: transform 0.15s ease; mix-blend-mode: difference; }
+  .cursor-ring { width:36px;height:36px; border:1px solid var(--caramel); border-radius:50%; position:fixed; top:0;left:0; pointer-events:none; z-index:9998; transition: transform 0.4s ease, width 0.3s, height 0.3s, opacity 0.3s; opacity:0.6; }
 
-  /* Custom cursor */
-  .cursor {
-    width: 10px; height: 10px;
-    background: var(--caramel);
-    border-radius: 50%;
-    position: fixed;
-    top: 0; left: 0;
-    pointer-events: none;
-    z-index: 9999;
-    transition: transform 0.15s ease;
-    mix-blend-mode: difference;
-  }
-  .cursor-ring {
-    width: 36px; height: 36px;
-    border: 1px solid var(--caramel);
-    border-radius: 50%;
-    position: fixed;
-    top: 0; left: 0;
-    pointer-events: none;
-    z-index: 9998;
-    transition: transform 0.4s ease, width 0.3s ease, height 0.3s ease, opacity 0.3s;
-    opacity: 0.6;
-  }
+  nav { position:fixed; top:0;left:0;right:0; z-index:100; padding:1.5rem 3rem; display:flex; justify-content:space-between; align-items:center; background:linear-gradient(to bottom,rgba(26,15,8,0.95),transparent); }
+  .nav-logo { font-family:'Cormorant Garamond',serif; font-size:1.4rem; font-weight:300; letter-spacing:0.2em; color:var(--latte); text-decoration:none; }
+  .nav-links { display:flex; gap:2rem; list-style:none; flex-wrap:wrap; }
+  .nav-links a { font-family:'DM Mono',monospace; font-size:0.68rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--steam); text-decoration:none; transition:color 0.3s; }
+  .nav-links a:hover { color:var(--caramel); }
 
-  /* NAV */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    padding: 1.5rem 3rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: linear-gradient(to bottom, rgba(26,15,8,0.95), transparent);
-  }
-  .nav-logo {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.4rem;
-    font-weight: 300;
-    letter-spacing: 0.2em;
-    color: var(--latte);
-    text-decoration: none;
-  }
-  .nav-links {
-    display: flex;
-    gap: 2.5rem;
-    list-style: none;
-  }
-  .nav-links a {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.72rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--steam);
-    text-decoration: none;
-    transition: color 0.3s;
-  }
-  .nav-links a:hover { color: var(--caramel); }
+  #hero { min-height:100vh; display:flex; align-items:center; position:relative; overflow:hidden; padding:8rem 3rem 4rem; }
+  .hero-bg { position:absolute; inset:0; background:radial-gradient(ellipse 70% 70% at 80% 50%,#3d1f0e 0%,var(--espresso) 70%); }
+  .hero-rings { position:absolute; right:-100px; top:50%; transform:translateY(-50%); width:700px; height:700px; opacity:0.08; }
+  .hero-rings circle { fill:none; stroke:var(--caramel); animation:rotateSlow 30s linear infinite; transform-origin:center; }
+  @keyframes rotateSlow { to { transform:rotate(360deg); } }
+  .hero-content { position:relative; z-index:2; max-width:700px; }
+  .hero-tag { font-family:'DM Mono',monospace; font-size:0.72rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--caramel); margin-bottom:1.5rem; opacity:0; animation:fadeUp 0.8s ease 0.2s forwards; }
+  .hero-name { font-family:'Cormorant Garamond',serif; font-size:clamp(4rem,9vw,7.5rem); font-weight:300; line-height:0.9; color:var(--cream); margin-bottom:0.4rem; opacity:0; animation:fadeUp 0.9s ease 0.35s forwards; }
+  .hero-name em { font-style:italic; color:var(--latte); }
+  .hero-title { font-family:'Cormorant Garamond',serif; font-size:clamp(1.1rem,2vw,1.6rem); font-weight:300; font-style:italic; color:var(--muted); margin-bottom:2rem; opacity:0; animation:fadeUp 0.9s ease 0.5s forwards; }
+  .hero-desc { font-size:0.95rem; line-height:1.8; color:var(--steam); max-width:520px; margin-bottom:3rem; opacity:0; animation:fadeUp 0.9s ease 0.65s forwards; }
+  .hero-ctas { display:flex; gap:1.2rem; flex-wrap:wrap; opacity:0; animation:fadeUp 0.9s ease 0.8s forwards; }
+  .btn-primary { background:var(--caramel); color:var(--espresso); padding:0.85rem 2.2rem; font-family:'DM Mono',monospace; font-size:0.75rem; letter-spacing:0.15em; text-transform:uppercase; text-decoration:none; border:none; cursor:none; transition:background 0.3s,transform 0.2s; display:inline-block; }
+  .btn-primary:hover { background:var(--latte); transform:translateY(-2px); }
+  .btn-ghost { border:1px solid var(--bark); color:var(--latte); padding:0.85rem 2.2rem; font-family:'DM Mono',monospace; font-size:0.75rem; letter-spacing:0.15em; text-transform:uppercase; text-decoration:none; cursor:none; transition:border-color 0.3s,color 0.3s; display:inline-block; }
+  .btn-ghost:hover { border-color:var(--caramel); color:var(--caramel); }
+  .hero-stats { position:absolute; right:3rem; bottom:4rem; display:flex; gap:3rem; opacity:0; animation:fadeUp 0.9s ease 1s forwards; }
+  .stat { text-align:right; }
+  .stat-num { font-family:'Cormorant Garamond',serif; font-size:3rem; font-weight:300; color:var(--caramel); line-height:1; }
+  .stat-label { font-family:'DM Mono',monospace; font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--muted); margin-top:0.3rem; }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(24px);} to{opacity:1;transform:translateY(0);} }
 
-  /* HERO */
-  #hero {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    position: relative;
-    overflow: hidden;
-    padding: 8rem 3rem 4rem;
-  }
-  .hero-bg {
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse 70% 70% at 80% 50%, #3d1f0e 0%, var(--espresso) 70%);
-  }
-  .hero-rings {
-    position: absolute;
-    right: -100px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 700px;
-    height: 700px;
-    opacity: 0.08;
-  }
-  .hero-rings circle {
-    fill: none;
-    stroke: var(--caramel);
-    animation: rotateSlow 30s linear infinite;
-    transform-origin: center;
-  }
-  @keyframes rotateSlow { to { transform: rotate(360deg); } }
-
-  .hero-content {
-    position: relative;
-    z-index: 2;
-    max-width: 700px;
-  }
-  .hero-tag {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.72rem;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--caramel);
-    margin-bottom: 1.5rem;
-    opacity: 0;
-    animation: fadeUp 0.8s ease 0.2s forwards;
-  }
-  .hero-name {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(4rem, 9vw, 7.5rem);
-    font-weight: 300;
-    line-height: 0.9;
-    color: var(--cream);
-    margin-bottom: 0.4rem;
-    opacity: 0;
-    animation: fadeUp 0.9s ease 0.35s forwards;
-  }
-  .hero-name em {
-    font-style: italic;
-    color: var(--latte);
-  }
-  .hero-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(1.2rem, 2.5vw, 1.8rem);
-    font-weight: 300;
-    font-style: italic;
-    color: var(--muted);
-    margin-bottom: 2rem;
-    opacity: 0;
-    animation: fadeUp 0.9s ease 0.5s forwards;
-  }
-  .hero-desc {
-    font-size: 0.95rem;
-    line-height: 1.8;
-    color: var(--steam);
-    max-width: 520px;
-    margin-bottom: 3rem;
-    opacity: 0;
-    animation: fadeUp 0.9s ease 0.65s forwards;
-  }
-  .hero-ctas {
-    display: flex;
-    gap: 1.2rem;
-    flex-wrap: wrap;
-    opacity: 0;
-    animation: fadeUp 0.9s ease 0.8s forwards;
-  }
-  .btn-primary {
-    background: var(--caramel);
-    color: var(--espresso);
-    padding: 0.85rem 2.2rem;
-    font-family: 'DM Mono', monospace;
-    font-size: 0.75rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    text-decoration: none;
-    border: none;
-    cursor: none;
-    transition: background 0.3s, transform 0.2s;
-    display: inline-block;
-  }
-  .btn-primary:hover { background: var(--latte); transform: translateY(-2px); }
-  .btn-ghost {
-    border: 1px solid var(--bark);
-    color: var(--latte);
-    padding: 0.85rem 2.2rem;
-    font-family: 'DM Mono', monospace;
-    font-size: 0.75rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    text-decoration: none;
-    cursor: none;
-    transition: border-color 0.3s, color 0.3s;
-    display: inline-block;
-  }
-  .btn-ghost:hover { border-color: var(--caramel); color: var(--caramel); }
-
-  .hero-stats {
-    position: absolute;
-    right: 3rem;
-    bottom: 4rem;
-    display: flex;
-    gap: 3rem;
-    opacity: 0;
-    animation: fadeUp 0.9s ease 1s forwards;
-  }
-  .stat { text-align: right; }
-  .stat-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 3rem;
-    font-weight: 300;
-    color: var(--caramel);
-    line-height: 1;
-  }
-  .stat-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.65rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-top: 0.3rem;
-  }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  /* DIVIDER */
-  .section-divider {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-    margin-bottom: 4rem;
-  }
-  .divider-line { flex: 1; height: 1px; background: var(--bark); }
-  .divider-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.68rem;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--caramel);
-  }
-
-  /* SECTION BASE */
-  section { padding: 6rem 3rem; }
-  .section-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    font-weight: 300;
-    line-height: 1.1;
-    margin-bottom: 1rem;
-  }
-  .section-title em { font-style: italic; color: var(--latte); }
+  .section-divider { display:flex; align-items:center; gap:1.5rem; margin-bottom:4rem; }
+  .divider-line { flex:1; height:1px; background:var(--bark); }
+  .divider-label { font-family:'DM Mono',monospace; font-size:0.68rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--caramel); }
+  section { padding:6rem 3rem; }
+  .section-title { font-family:'Cormorant Garamond',serif; font-size:clamp(2.5rem,5vw,4rem); font-weight:300; line-height:1.1; margin-bottom:1rem; }
+  .section-title em { font-style:italic; color:var(--latte); }
 
   /* ABOUT */
-  #about { background: var(--roast); }
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5rem;
-    align-items: start;
-    margin-top: 3rem;
-  }
-  .about-text p {
-    font-size: 1rem;
-    line-height: 1.9;
-    color: var(--steam);
-    margin-bottom: 1.5rem;
-  }
-  .about-details {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-    margin-top: 2rem;
-  }
-  .detail-item { border-left: 1px solid var(--bark); padding-left: 1rem; }
-  .detail-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.65rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 0.3rem;
-  }
-  .detail-val { font-size: 0.9rem; color: var(--cream); }
-
-  .lang-list { margin-top: 2.5rem; }
-  .lang-list h4 {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.68rem;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--caramel);
-    margin-bottom: 1rem;
-  }
-  .lang-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 0.8rem;
-    padding-bottom: 0.8rem;
-    border-bottom: 1px solid #3d2416;
-    font-size: 0.9rem;
-    color: var(--steam);
-  }
-  .lang-dots { display: flex; gap: 5px; }
-  .lang-dot {
-    width: 7px; height: 7px;
-    border-radius: 50%;
-    background: var(--bark);
-  }
-  .lang-dot.active { background: var(--caramel); }
+  #about { background:var(--roast); }
+  .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:start; margin-top:3rem; }
+  .about-text p { font-size:1rem; line-height:1.9; color:var(--steam); margin-bottom:1.5rem; }
+  .about-details { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-top:2rem; }
+  .detail-item { border-left:1px solid var(--bark); padding-left:1rem; }
+  .detail-label { font-family:'DM Mono',monospace; font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--muted); margin-bottom:0.3rem; }
+  .detail-val { font-size:0.9rem; color:var(--cream); }
+  .lang-list { margin-top:2.5rem; }
+  .lang-list h4 { font-family:'DM Mono',monospace; font-size:0.68rem; letter-spacing:0.25em; text-transform:uppercase; color:var(--caramel); margin-bottom:1rem; }
+  .lang-item { display:flex; justify-content:space-between; align-items:center; margin-bottom:0.8rem; padding-bottom:0.8rem; border-bottom:1px solid #3d2416; font-size:0.9rem; color:var(--steam); }
+  .lang-dots { display:flex; gap:5px; }
+  .lang-dot { width:7px;height:7px;border-radius:50%;background:var(--bark); }
+  .lang-dot.active { background:var(--caramel); }
 
   /* EXPERIENCE */
-  #experience { background: var(--espresso); }
-  .exp-timeline { margin-top: 3rem; }
-  .exp-item {
-    display: grid;
-    grid-template-columns: 200px 1fr;
-    gap: 3rem;
-    margin-bottom: 4rem;
-    padding-bottom: 4rem;
-    border-bottom: 1px solid #2d1810;
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-  }
-  .exp-item.visible { opacity: 1; transform: translateY(0); }
-  .exp-meta { padding-top: 0.3rem; }
-  .exp-date {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.15em;
-    color: var(--caramel);
-    margin-bottom: 0.5rem;
-  }
-  .exp-co {
-    font-size: 0.82rem;
-    color: var(--muted);
-    line-height: 1.4;
-  }
-  .exp-role {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.6rem;
-    font-weight: 400;
-    color: var(--cream);
-    margin-bottom: 0.3rem;
-  }
-  .exp-tag {
-    display: inline-block;
-    background: var(--bark);
-    color: var(--latte);
-    font-family: 'DM Mono', monospace;
-    font-size: 0.62rem;
-    letter-spacing: 0.15em;
-    padding: 0.3rem 0.7rem;
-    text-transform: uppercase;
-    margin-bottom: 1.2rem;
-  }
-  .exp-achievements {
-    list-style: none;
-    display: grid;
-    gap: 0.6rem;
-  }
-  .exp-achievements li {
-    font-size: 0.88rem;
-    line-height: 1.6;
-    color: var(--steam);
-    padding-left: 1.2rem;
-    position: relative;
-  }
-  .exp-achievements li::before {
-    content: '—';
-    position: absolute;
-    left: 0;
-    color: var(--caramel);
-    font-size: 0.75rem;
-  }
+  #experience { background:var(--espresso); }
+  .exp-timeline { margin-top:3rem; }
+  .exp-item { display:grid; grid-template-columns:200px 1fr; gap:3rem; margin-bottom:4rem; padding-bottom:4rem; border-bottom:1px solid #2d1810; opacity:0; transform:translateY(30px); transition:opacity 0.6s ease,transform 0.6s ease; }
+  .exp-item.visible { opacity:1; transform:translateY(0); }
+  .exp-meta { padding-top:0.3rem; }
+  .exp-date { font-family:'DM Mono',monospace; font-size:0.7rem; letter-spacing:0.15em; color:var(--caramel); margin-bottom:0.5rem; }
+  .exp-co { font-size:0.82rem; color:var(--muted); line-height:1.4; }
+  .exp-role { font-family:'Cormorant Garamond',serif; font-size:1.6rem; font-weight:400; color:var(--cream); margin-bottom:0.3rem; }
+  .exp-tag { display:inline-block; background:var(--bark); color:var(--latte); font-family:'DM Mono',monospace; font-size:0.62rem; letter-spacing:0.15em; padding:0.3rem 0.7rem; text-transform:uppercase; margin-bottom:1.2rem; }
+  .exp-achievements { list-style:none; display:grid; gap:0.6rem; }
+  .exp-achievements li { font-size:0.88rem; line-height:1.6; color:var(--steam); padding-left:1.2rem; position:relative; }
+  .exp-achievements li::before { content:'—'; position:absolute; left:0; color:var(--caramel); font-size:0.75rem; }
 
   /* SKILLS */
-  #skills { background: var(--roast); }
-  .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 1.5rem;
-    margin-top: 3rem;
-  }
-  .skill-card {
-    background: rgba(255,255,255,0.03);
-    border: 1px solid #3d2416;
-    padding: 1.8rem;
-    transition: border-color 0.3s, background 0.3s, transform 0.3s;
-  }
-  .skill-card:hover {
-    border-color: var(--caramel);
-    background: rgba(200,132,60,0.06);
-    transform: translateY(-4px);
-  }
-  .skill-icon {
-    font-size: 1.8rem;
-    margin-bottom: 0.8rem;
-  }
-  .skill-name {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.2rem;
-    color: var(--cream);
-    margin-bottom: 0.8rem;
-  }
-  .skill-bar {
-    height: 2px;
-    background: #3d2416;
-    position: relative;
-    overflow: hidden;
-  }
-  .skill-fill {
-    position: absolute;
-    left: 0; top: 0; bottom: 0;
-    background: var(--caramel);
-    width: 0;
-    transition: width 1.2s ease;
-  }
-  .skill-card.animated .skill-fill { width: var(--pct); }
+  #skills { background:var(--roast); }
+  .skills-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:1.5rem; margin-top:3rem; }
+  .skill-card { background:rgba(255,255,255,0.03); border:1px solid #3d2416; padding:1.8rem; transition:border-color 0.3s,background 0.3s,transform 0.3s; }
+  .skill-card:hover { border-color:var(--caramel); background:rgba(200,132,60,0.06); transform:translateY(-4px); }
+  .skill-icon { font-size:1.8rem; margin-bottom:0.8rem; }
+  .skill-name { font-family:'Cormorant Garamond',serif; font-size:1.2rem; color:var(--cream); margin-bottom:0.8rem; }
+  .skill-bar { height:2px; background:#3d2416; position:relative; overflow:hidden; }
+  .skill-fill { position:absolute; left:0;top:0;bottom:0; background:var(--caramel); width:0; transition:width 1.2s ease; }
+  .skill-card.animated .skill-fill { width:var(--pct); }
+
+  /* TRAINING */
+  #training { background:var(--espresso); }
+  .training-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:1.5rem; margin-top:3rem; }
+  .training-card { border:1px solid #2d1810; padding:1.8rem; position:relative; overflow:hidden; transition:border-color 0.3s,transform 0.3s; }
+  .training-card::before { content:''; position:absolute; top:0;left:0;right:0; height:2px; background:var(--caramel); transform:scaleX(0); transition:transform 0.4s ease; }
+  .training-card:hover::before { transform:scaleX(1); }
+  .training-card:hover { border-color:var(--caramel); transform:translateY(-3px); }
+  .training-icon { font-size:2rem; margin-bottom:0.8rem; }
+  .training-title { font-family:'Cormorant Garamond',serif; font-size:1.25rem; color:var(--cream); margin-bottom:0.5rem; }
+  .training-desc { font-size:0.85rem; color:var(--muted); line-height:1.6; }
 
   /* EDUCATION */
-  #education { background: var(--espresso); }
-  .edu-card {
+  #education { background:var(--roast); }
+  .edu-card { display:flex; gap:3rem; background:rgba(255,255,255,0.03); border:1px solid #3d2416; padding:2.5rem; margin-top:2rem; align-items:center; }
+  .edu-year { font-family:'Cormorant Garamond',serif; font-size:3.5rem; font-weight:300; color:var(--bark); white-space:nowrap; line-height:1; }
+  .edu-info h3 { font-family:'Cormorant Garamond',serif; font-size:1.6rem; font-weight:400; color:var(--cream); margin-bottom:0.4rem; }
+  .edu-inst { font-family:'DM Mono',monospace; font-size:0.72rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--caramel); }
+
+  /* CONTACT */
+  #contact { background:var(--espresso); }
+  .contact-layout { display:grid; grid-template-columns:1fr 1.2fr; gap:5rem; margin-top:3rem; }
+  .contact-info p { font-size:0.95rem; line-height:1.8; color:var(--steam); margin-bottom:2.5rem; }
+  .contact-links { display:flex; flex-direction:column; gap:1rem; }
+  .contact-link { display:flex; align-items:center; gap:1rem; text-decoration:none; color:var(--steam); font-size:0.9rem; transition:color 0.3s; padding-bottom:1rem; border-bottom:1px solid #2d1810; }
+  .contact-link:hover { color:var(--caramel); }
+  .contact-link-icon { width:36px;height:36px;background:var(--bark);display:flex;align-items:center;justify-content:center;font-size:0.9rem;flex-shrink:0; }
+  .contact-form { display:flex; flex-direction:column; gap:1.2rem; }
+  .form-group { display:flex; flex-direction:column; gap:0.4rem; }
+  .form-group label { font-family:'DM Mono',monospace; font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--muted); }
+  .form-group input,.form-group textarea { background:rgba(255,255,255,0.04); border:1px solid #2d1810; color:var(--cream); padding:0.85rem 1rem; font-family:'Archivo',sans-serif; font-size:0.9rem; outline:none; transition:border-color 0.3s; resize:none; cursor:none; }
+  .form-group input:focus,.form-group textarea:focus { border-color:var(--caramel); }
+  .form-group textarea { height:130px; }
+  .form-note { font-family:'DM Mono',monospace; font-size:0.68rem; color:var(--caramel); text-align:center; margin-top:0.5rem; }
+
+  footer { background:var(--espresso); border-top:1px solid #2d1810; padding:2rem 3rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; }
+  .footer-copy { font-family:'DM Mono',monospace; font-size:0.68rem; letter-spacing:0.12em; color:var(--muted); }
+  .footer-scroll { font-family:'DM Mono',monospace; font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--caramel); text-decoration:none; cursor:none; }
+
+  /* FLOATING CV BUTTON */
+  .cv-float {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 500;
     display: flex;
-    gap: 3rem;
-    background: rgba(255,255,255,0.03);
-    border: 1px solid #2d1810;
-    padding: 2.5rem;
-    margin-top: 3rem;
     align-items: center;
-  }
-  .edu-year {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 3.5rem;
-    font-weight: 300;
-    color: var(--bark);
-    white-space: nowrap;
-    line-height: 1;
-  }
-  .edu-info h3 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.6rem;
-    font-weight: 400;
-    color: var(--cream);
-    margin-bottom: 0.4rem;
-  }
-  .edu-inst {
+    gap: 0.7rem;
+    background: var(--caramel);
+    color: var(--espresso);
+    padding: 0.9rem 1.5rem;
     font-family: 'DM Mono', monospace;
     font-size: 0.72rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: var(--caramel);
-  }
-
-  /* CONTACT */
-  #contact { background: var(--roast); }
-  .contact-layout {
-    display: grid;
-    grid-template-columns: 1fr 1.2fr;
-    gap: 5rem;
-    margin-top: 3rem;
-  }
-  .contact-info p {
-    font-size: 0.95rem;
-    line-height: 1.8;
-    color: var(--steam);
-    margin-bottom: 2.5rem;
-  }
-  .contact-links { display: flex; flex-direction: column; gap: 1rem; }
-  .contact-link {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    text-decoration: none;
-    color: var(--steam);
-    font-size: 0.9rem;
-    transition: color 0.3s;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid #3d2416;
-  }
-  .contact-link:hover { color: var(--caramel); }
-  .contact-link-icon {
-    width: 36px; height: 36px;
-    background: var(--bark);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 0.9rem;
-    flex-shrink: 0;
-  }
-
-  .contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
-  .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
-  .form-group label {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.65rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--muted);
-  }
-  .form-group input,
-  .form-group textarea {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid #3d2416;
-    color: var(--cream);
-    padding: 0.85rem 1rem;
-    font-family: 'Archivo', sans-serif;
-    font-size: 0.9rem;
-    outline: none;
-    transition: border-color 0.3s;
-    resize: none;
-    cursor: none;
-  }
-  .form-group input:focus,
-  .form-group textarea:focus { border-color: var(--caramel); }
-  .form-group textarea { height: 130px; }
-  .form-note {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.68rem;
-    color: var(--caramel);
-    text-align: center;
-    margin-top: 0.5rem;
-  }
-
-  /* FOOTER */
-  footer {
-    background: var(--espresso);
-    border-top: 1px solid #2d1810;
-    padding: 2rem 3rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-  .footer-copy {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.68rem;
-    letter-spacing: 0.12em;
-    color: var(--muted);
-  }
-  .footer-scroll {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.65rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--caramel);
     text-decoration: none;
     cursor: none;
-  }
-
-  /* MOBILE */
-  @media (max-width: 768px) {
-    nav { padding: 1.2rem 1.5rem; }
-    .nav-links { gap: 1.2rem; }
-    section { padding: 4rem 1.5rem; }
-    #hero { padding: 7rem 1.5rem 3rem; }
-    .hero-stats { position: static; flex-wrap: wrap; gap: 1.5rem; margin-top: 3rem; }
-    .stat { text-align: left; }
-    .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-    .exp-item { grid-template-columns: 1fr; gap: 0.8rem; }
-    .contact-layout { grid-template-columns: 1fr; gap: 3rem; }
-    .edu-card { flex-direction: column; gap: 1rem; }
-    footer { flex-direction: column; text-align: center; }
-  }
-
-  /* Scroll fade */
-  .fade-in {
+    box-shadow: 0 8px 32px rgba(200,132,60,0.35);
     opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
+    transform: translateY(20px);
+    transition: background 0.3s, transform 0.2s, opacity 0.6s ease, box-shadow 0.3s;
   }
-  .fade-in.visible { opacity: 1; transform: translateY(0); }
+  .cv-float.show { opacity: 1; transform: translateY(0); }
+  .cv-float:hover { background: var(--latte); transform: translateY(-3px); box-shadow: 0 12px 40px rgba(200,132,60,0.5); }
+  .cv-float-icon { font-size: 1rem; }
+  .cv-float-pulse {
+    position: absolute;
+    inset: -4px;
+    border: 1px solid var(--caramel);
+    opacity: 0;
+    animation: pulse 2.5s ease 3.8s infinite;
+  }
+  @keyframes pulse { 0%{opacity:0.6;transform:scale(1);} 100%{opacity:0;transform:scale(1.1);} }
+
+  .fade-in { opacity:0; transform:translateY(30px); transition:opacity 0.7s ease,transform 0.7s ease; }
+  .fade-in.visible { opacity:1; transform:translateY(0); }
+
+  @media(max-width:768px){
+    nav{padding:1.2rem 1.5rem;}
+    .nav-links{gap:1rem;}
+    .nav-links a{font-size:0.6rem;}
+    section{padding:4rem 1.5rem;}
+    #hero{padding:7rem 1.5rem 3rem;}
+    .hero-stats{position:static;flex-wrap:wrap;gap:1.5rem;margin-top:3rem;}
+    .stat{text-align:left;}
+    .about-grid{grid-template-columns:1fr;gap:2.5rem;}
+    .exp-item{grid-template-columns:1fr;gap:0.8rem;}
+    .contact-layout{grid-template-columns:1fr;gap:3rem;}
+    .edu-card{flex-direction:column;gap:1rem;}
+    footer{flex-direction:column;text-align:center;}
+    .cv-float{bottom:1.2rem;right:1.2rem;padding:0.75rem 1.2rem;}
+  }
 </style>
 </head>
 <body>
@@ -594,12 +194,20 @@
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cursorRing"></div>
 
+<!-- FLOATING CV BUTTON -->
+<a href="#" class="cv-float" id="cvFloat" onclick="downloadCV(event)">
+  <div class="cv-float-pulse"></div>
+  <span class="cv-float-icon">⬇</span>
+  Download CV
+</a>
+
 <nav>
   <a href="#hero" class="nav-logo">A · G</a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#skills">Skills</a></li>
+    <li><a href="#training">Training</a></li>
     <li><a href="#education">Education</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
@@ -610,103 +218,55 @@
   <div class="hero-bg"></div>
   <svg class="hero-rings" viewBox="0 0 700 700">
     <circle cx="350" cy="350" r="280" stroke-width="1"/>
-    <circle cx="350" cy="350" r="220" stroke-width="0.5" style="animation-direction:reverse; animation-duration:20s"/>
+    <circle cx="350" cy="350" r="220" stroke-width="0.5" style="animation-direction:reverse;animation-duration:20s"/>
     <circle cx="350" cy="350" r="340" stroke-width="0.3" style="animation-duration:45s"/>
   </svg>
   <div class="hero-content">
-    <p class="hero-tag">☕ Barista · Supervisor · Artisan</p>
+    <p class="hero-tag">☕ Barista · Sommelier · Service Captain · Artisan</p>
     <h1 class="hero-name">Anil<br><em>Gurung</em></h1>
-    <p class="hero-title">Senior Beverage Specialist</p>
-    <p class="hero-desc">Seven years crafting exceptional coffee experiences across Dubai's premier hospitality venues — from precision espresso to specialty latte art, and from mentoring teams to managing operations at scale.</p>
+    <p class="hero-title">Senior Beverage Specialist & Wine Enthusiast</p>
+    <p class="hero-desc">Eight years of crafting exceptional beverage experiences — from precision espresso and latte art to wine, sake, and tequila — leading teams across Nepal, Singapore, and Dubai's premier hospitality venues.</p>
     <div class="hero-ctas">
       <a href="#contact" class="btn-primary">Hire Me</a>
       <a href="#experience" class="btn-ghost">View Experience</a>
     </div>
   </div>
   <div class="hero-stats">
-    <div class="stat">
-      <div class="stat-num">7+</div>
-      <div class="stat-label">Years Experience</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">3</div>
-      <div class="stat-label">Countries Worked</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">5★</div>
-      <div class="stat-label">Venues</div>
-    </div>
+    <div class="stat"><div class="stat-num">8+</div><div class="stat-label">Years Experience</div></div>
+    <div class="stat"><div class="stat-num">3</div><div class="stat-label">Countries Worked</div></div>
+    <div class="stat"><div class="stat-num">5★</div><div class="stat-label">Venues</div></div>
   </div>
 </section>
 
 <!-- ABOUT -->
 <section id="about">
-  <div class="section-divider">
-    <div class="divider-line"></div>
-    <span class="divider-label">01 / About</span>
-    <div class="divider-line"></div>
-  </div>
+  <div class="section-divider"><div class="divider-line"></div><span class="divider-label">01 / About</span><div class="divider-line"></div></div>
   <h2 class="section-title fade-in">Passion brewed<br>into <em>expertise</em></h2>
   <div class="about-grid">
     <div class="about-text fade-in">
-      <p>I'm a dedicated beverage specialist with deep roots in the art and science of coffee. From my early training in Kathmandu's hospitality schools to supervising teams at Dubai's most prestigious clubs, I've spent my career pursuing the perfect cup.</p>
-      <p>My journey spans Nepal, Singapore, and the UAE — each experience shaping my understanding of service, craft, and leadership. At The Arts Club Dubai, I continue to raise the bar in beverage excellence every day.</p>
+      <p>I'm a dedicated beverage specialist with a deep passion for the art and science of drinks — from coffee and tea to wine, sake, and spirits. My hospitality journey began in Kathmandu and has taken me across Nepal, Singapore, and Dubai's most prestigious venues.</p>
+      <p>I combine hands-on craft with leadership skills — I've trained teams, supervised operations, and continuously invested in my own education through specialized beverage courses. Whether behind an espresso machine or recommending a wine pairing, I bring the same standard of excellence.</p>
       <div class="about-details">
-        <div class="detail-item">
-          <div class="detail-label">Location</div>
-          <div class="detail-val">Dubai, UAE</div>
-        </div>
-        <div class="detail-item">
-          <div class="detail-label">Based in</div>
-          <div class="detail-val">Bhaktapur, Nepal</div>
-        </div>
-        <div class="detail-item">
-          <div class="detail-label">Email</div>
-          <div class="detail-val" style="font-size:0.8rem">Yognil1995@gmail.com</div>
-        </div>
-        <div class="detail-item">
-          <div class="detail-label">Phone</div>
-          <div class="detail-val">9701149239</div>
-        </div>
+        <div class="detail-item"><div class="detail-label">Location</div><div class="detail-val">Bhaktapur, Nepal</div></div>
+        <div class="detail-item"><div class="detail-label">Currently</div><div class="detail-val">Dubai, UAE</div></div>
+        <div class="detail-item"><div class="detail-label">Email</div><div class="detail-val" style="font-size:0.8rem">Yognil1995@gmail.com</div></div>
+        <div class="detail-item"><div class="detail-label">Phone</div><div class="detail-val">9701149239</div></div>
       </div>
     </div>
     <div class="fade-in">
       <div class="lang-list">
         <h4>Languages</h4>
-        <div class="lang-item">
-          English
-          <div class="lang-dots">
-            <div class="lang-dot active"></div>
-            <div class="lang-dot active"></div>
-            <div class="lang-dot active"></div>
-            <div class="lang-dot active"></div>
-            <div class="lang-dot"></div>
-          </div>
-        </div>
-        <div class="lang-item">
-          Nepali
-          <div class="lang-dots">
-            <div class="lang-dot active"></div>
-            <div class="lang-dot active"></div>
-            <div class="lang-dot active"></div>
-            <div class="lang-dot active"></div>
-            <div class="lang-dot active"></div>
-          </div>
-        </div>
-        <div class="lang-item">
-          Hindi
-          <div class="lang-dots">
-            <div class="lang-dot active"></div>
-            <div class="lang-dot active"></div>
-            <div class="lang-dot active"></div>
-            <div class="lang-dot"></div>
-            <div class="lang-dot"></div>
-          </div>
-        </div>
+        <div class="lang-item">English <div class="lang-dots"><div class="lang-dot active"></div><div class="lang-dot active"></div><div class="lang-dot active"></div><div class="lang-dot active"></div><div class="lang-dot"></div></div></div>
+        <div class="lang-item">Nepali <div class="lang-dots"><div class="lang-dot active"></div><div class="lang-dot active"></div><div class="lang-dot active"></div><div class="lang-dot active"></div><div class="lang-dot active"></div></div></div>
+        <div class="lang-item">Hindi <div class="lang-dots"><div class="lang-dot active"></div><div class="lang-dot active"></div><div class="lang-dot active"></div><div class="lang-dot"></div><div class="lang-dot"></div></div></div>
       </div>
-      <div style="margin-top:2.5rem; padding:1.8rem; border:1px solid #3d2416;">
-        <p style="font-family:'DM Mono',monospace; font-size:0.68rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--caramel); margin-bottom:0.8rem;">Hobbies & Interests</p>
-        <p style="color:var(--steam); font-size:0.9rem; line-height:1.7;">📷 Photography &nbsp;·&nbsp; ☕ Coffee Science &nbsp;·&nbsp; 🌍 Travel &nbsp;·&nbsp; 🏍️ Motorcycling</p>
+      <div style="margin-top:2rem;padding:1.8rem;border:1px solid #3d2416;">
+        <p style="font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--caramel);margin-bottom:0.8rem;">Hobbies & Interests</p>
+        <p style="color:var(--steam);font-size:0.9rem;line-height:1.9;">
+          📷 Photography &nbsp;·&nbsp; ☕ Coffee Science<br>
+          🍽️ Exploring foods from different cultures & communities<br>
+          🍷 Wine study & tasting &nbsp;·&nbsp; 🏍️ Motorcycling
+        </p>
       </div>
     </div>
   </div>
@@ -714,37 +274,27 @@
 
 <!-- EXPERIENCE -->
 <section id="experience">
-  <div class="section-divider">
-    <div class="divider-line"></div>
-    <span class="divider-label">02 / Experience</span>
-    <div class="divider-line"></div>
-  </div>
+  <div class="section-divider"><div class="divider-line"></div><span class="divider-label">02 / Experience</span><div class="divider-line"></div></div>
   <h2 class="section-title fade-in">A career steeped<br>in <em>excellence</em></h2>
   <div class="exp-timeline">
 
     <div class="exp-item">
-      <div class="exp-meta">
-        <div class="exp-date">Sep 2024 – Present</div>
-        <div class="exp-co">The Arts Club Dubai<br>Dubai, UAE</div>
-      </div>
+      <div class="exp-meta"><div class="exp-date">Sep 2024 – Present</div><div class="exp-co">The Arts Club Dubai<br>Dubai, UAE</div></div>
       <div>
         <div class="exp-tag">Current Role</div>
         <h3 class="exp-role">Coffee Beverage Maker</h3>
         <ul class="exp-achievements">
-          <li>Prepares and serves a variety of high-quality coffee beverages with consistent taste and presentation.</li>
+          <li>Prepares and serves high-quality coffee beverages ensuring consistent taste and presentation in a luxury members' club.</li>
           <li>Operates and maintains espresso machines to guarantee peak performance and beverage quality.</li>
           <li>Manages inventory and supplier relationships to secure premium beans while minimizing waste.</li>
           <li>Implements unique coffee blending techniques that enhanced flavor profiles and customer satisfaction.</li>
-          <li>Leads barista teams during peak hours to optimize workflow in this high-volume luxury venue.</li>
+          <li>Leads barista teams during peak hours to optimize workflow in this high-volume venue.</li>
         </ul>
       </div>
     </div>
 
     <div class="exp-item">
-      <div class="exp-meta">
-        <div class="exp-date">Mar 2022 – Aug 2024</div>
-        <div class="exp-co">Palma Café & OT Cookies<br>Dubai, UAE</div>
-      </div>
+      <div class="exp-meta"><div class="exp-date">Mar 2022 – Aug 2024</div><div class="exp-co">Palma Café & OT Cookies<br>Dubai, UAE</div></div>
       <div>
         <div class="exp-tag">Supervisor</div>
         <h3 class="exp-role">Supervisor Beverage Maker</h3>
@@ -753,57 +303,75 @@
           <li>Trained and mentored junior beverage makers, elevating service standards and team skill sets.</li>
           <li>Coordinated inventory management and supply ordering to prevent shortages and control costs.</li>
           <li>Developed staff schedules and collaborated with management to optimize team productivity.</li>
-          <li>Implemented and monitored compliance with health and safety regulations across the service area.</li>
+          <li>Implemented and monitored health and safety compliance across the beverage service area.</li>
         </ul>
       </div>
     </div>
 
     <div class="exp-item">
-      <div class="exp-meta">
-        <div class="exp-date">Mar 2021 – Feb 2022</div>
-        <div class="exp-co">Place Café<br>Dubai, UAE</div>
-      </div>
+      <div class="exp-meta"><div class="exp-date">Mar 2021 – Feb 2022</div><div class="exp-co">Place Café<br>Dubai, UAE</div></div>
       <div>
         <div class="exp-tag">Barista</div>
         <h3 class="exp-role">Beverage Maker</h3>
         <ul class="exp-achievements">
-          <li>Prepared and served high-quality coffee and specialty beverages in a fast-paced Dubai café.</li>
+          <li>Prepared and served high-quality coffee and specialty beverages in a fast-paced café environment.</li>
           <li>Delivered excellent customer service, accurately taking orders and professionally resolving complaints.</li>
-          <li>Implemented coffee blending techniques to enhance flavor profiles, boosting customer satisfaction.</li>
           <li>Trained new baristas on company standards, coffee preparation, and service protocols.</li>
-          <li>Exceeded health inspection standards through consistent compliance with hygiene regulations.</li>
+          <li>Exceeded health inspection standards through consistent hygiene compliance.</li>
         </ul>
       </div>
     </div>
 
     <div class="exp-item">
-      <div class="exp-meta">
-        <div class="exp-date">Sep 2017 – Feb 2018</div>
-        <div class="exp-co">Park Royal Hotel<br>Singapore</div>
+      <div class="exp-meta"><div class="exp-date">Mar 2019 – Feb 2020</div><div class="exp-co">LOD Club<br>Bhaktapur, Nepal</div></div>
+      <div>
+        <div class="exp-tag">Leadership</div>
+        <h3 class="exp-role">Service Captain <span style="font-size:1rem;color:var(--muted)">(Head Waiter)</span></h3>
+        <ul class="exp-achievements">
+          <li>Led front-of-house service operations, overseeing a team of waitstaff to ensure seamless guest experiences.</li>
+          <li>Managed table allocations, reservations, and floor flow to maximize efficiency during peak service.</li>
+          <li>Trained junior staff on service standards, beverage knowledge, and guest interaction protocols.</li>
+          <li>Coordinated with kitchen and bar teams to ensure timely, accurate delivery of food and drinks.</li>
+        </ul>
       </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta"><div class="exp-date">Jan 2018 – Feb 2019</div><div class="exp-co">Calm Resto and Bar<br>Bhaktapur, Nepal</div></div>
+      <div>
+        <div class="exp-tag">Leadership</div>
+        <h3 class="exp-role">Service Captain <span style="font-size:1rem;color:var(--muted)">(Head Waiter)</span></h3>
+        <ul class="exp-achievements">
+          <li>Supervised all front-of-house operations in a busy restaurant and bar environment.</li>
+          <li>Ensured high standards of customer service and professional conduct across the service team.</li>
+          <li>Assisted in menu planning and beverage selection, applying knowledge of food and drink pairing.</li>
+          <li>Handled guest complaints and special requests with professionalism and efficiency.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta"><div class="exp-date">Sep 2017 – Feb 2018</div><div class="exp-co">Park Royal Hotel<br>Singapore</div></div>
       <div>
         <div class="exp-tag">Hospitality</div>
         <h3 class="exp-role">Waiter</h3>
         <ul class="exp-achievements">
           <li>Delivered prompt, courteous table service in a high-volume international hotel restaurant.</li>
           <li>Managed reservations and seating arrangements to optimize dining-room flow.</li>
-          <li>Demonstrated expert menu knowledge, including daily specials and beverage pairings.</li>
+          <li>Demonstrated expert menu knowledge including daily specials and beverage pairings.</li>
         </ul>
       </div>
     </div>
 
     <div class="exp-item">
-      <div class="exp-meta">
-        <div class="exp-date">Jan 2017 – Mar 2017</div>
-        <div class="exp-co">Solti Crown Plaza<br>Kathmandu, Nepal</div>
-      </div>
+      <div class="exp-meta"><div class="exp-date">Jan 2017 – Mar 2017</div><div class="exp-co">Solti Crown Plaza<br>Kathmandu, Nepal</div></div>
       <div>
         <div class="exp-tag">Internship</div>
         <h3 class="exp-role">Kitchen Trainee / Commis Chef</h3>
         <ul class="exp-achievements">
           <li>Assisted in ingredient preparation and kitchen operations under senior chef supervision.</li>
-          <li>Learned and applied rigorous food safety, hygiene, and sanitation protocols.</li>
-          <li>Gained hands-on experience with professional kitchen equipment in a 5-star environment.</li>
+          <li>Learned and applied rigorous food safety, hygiene, and sanitation protocols in a 5-star kitchen.</li>
+          <li>Gained hands-on experience with professional kitchen equipment and plating standards.</li>
         </ul>
       </div>
     </div>
@@ -813,120 +381,93 @@
 
 <!-- SKILLS -->
 <section id="skills">
-  <div class="section-divider">
-    <div class="divider-line"></div>
-    <span class="divider-label">03 / Skills</span>
-    <div class="divider-line"></div>
-  </div>
-  <h2 class="section-title fade-in">The craft behind<br>every <em>cup</em></h2>
+  <div class="section-divider"><div class="divider-line"></div><span class="divider-label">03 / Skills</span><div class="divider-line"></div></div>
+  <h2 class="section-title fade-in">The craft behind<br>every <em>cup & glass</em></h2>
   <div class="skills-grid">
-    <div class="skill-card" data-pct="100%">
-      <div class="skill-icon">☕</div>
-      <div class="skill-name">Coffee Preparation</div>
-      <div class="skill-bar"><div class="skill-fill" style="--pct:100%"></div></div>
+    <div class="skill-card"><div class="skill-icon">☕</div><div class="skill-name">Coffee Preparation</div><div class="skill-bar"><div class="skill-fill" style="--pct:100%"></div></div></div>
+    <div class="skill-card"><div class="skill-icon">🎨</div><div class="skill-name">Latte Art</div><div class="skill-bar"><div class="skill-fill" style="--pct:100%"></div></div></div>
+    <div class="skill-card"><div class="skill-icon">🍷</div><div class="skill-name">Wine Knowledge</div><div class="skill-bar"><div class="skill-fill" style="--pct:88%"></div></div></div>
+    <div class="skill-card"><div class="skill-icon">🤝</div><div class="skill-name">Customer Service</div><div class="skill-bar"><div class="skill-fill" style="--pct:100%"></div></div></div>
+    <div class="skill-card"><div class="skill-icon">👥</div><div class="skill-name">Team Leadership</div><div class="skill-bar"><div class="skill-fill" style="--pct:92%"></div></div></div>
+    <div class="skill-card"><div class="skill-icon">📦</div><div class="skill-name">Inventory Management</div><div class="skill-bar"><div class="skill-fill" style="--pct:90%"></div></div></div>
+    <div class="skill-card"><div class="skill-icon">🔬</div><div class="skill-name">Quality Control</div><div class="skill-bar"><div class="skill-fill" style="--pct:95%"></div></div></div>
+    <div class="skill-card"><div class="skill-icon">🍽️</div><div class="skill-name">Food & Drink Pairing</div><div class="skill-bar"><div class="skill-fill" style="--pct:90%"></div></div></div>
+    <div class="skill-card"><div class="skill-icon">👨‍🏫</div><div class="skill-name">Workshops & Training</div><div class="skill-bar"><div class="skill-fill" style="--pct:90%"></div></div></div>
+  </div>
+</section>
+
+<!-- TRAINING & CERTIFICATIONS -->
+<section id="training">
+  <div class="section-divider"><div class="divider-line"></div><span class="divider-label">04 / Training</span><div class="divider-line"></div></div>
+  <h2 class="section-title fade-in">Certified in the<br><em>art of drinks</em></h2>
+  <p class="fade-in" style="color:var(--muted);font-size:0.9rem;max-width:550px;line-height:1.7;margin-bottom:0.5rem;">A continuous learner, Anil has pursued specialist beverage training across wine, spirits, tea, and coffee — building one of the most well-rounded palates in hospitality.</p>
+  <div class="training-grid" style="margin-top:2.5rem;">
+    <div class="training-card fade-in">
+      <div class="training-icon">🍷</div>
+      <div class="training-title">Sommelier Studies</div>
+      <div class="training-desc">Formal study in wine appreciation and sommelier practice — covering varietals, regions, terroir, tasting methodology, and service.</div>
     </div>
-    <div class="skill-card" data-pct="100%">
-      <div class="skill-icon">🎨</div>
-      <div class="skill-name">Latte Art</div>
-      <div class="skill-bar"><div class="skill-fill" style="--pct:100%"></div></div>
+    <div class="training-card fade-in">
+      <div class="training-icon">🍶</div>
+      <div class="training-title">Sake & Chinese Spirits</div>
+      <div class="training-desc">Specialized training in Sake (Japanese rice wine) and Baijiu (Chinese alcohol) — production methods, styles, and professional service.</div>
     </div>
-    <div class="skill-card" data-pct="100%">
-      <div class="skill-icon">🤝</div>
-      <div class="skill-name">Customer Service</div>
-      <div class="skill-bar"><div class="skill-fill" style="--pct:100%"></div></div>
+    <div class="training-card fade-in">
+      <div class="training-icon">🥃</div>
+      <div class="training-title">Tequila Masterclass</div>
+      <div class="training-desc">Dedicated tequila education covering agave types, production regions (Jalisco), Blanco/Reposado/Añejo expressions, and cocktail applications.</div>
     </div>
-    <div class="skill-card" data-pct="100%">
-      <div class="skill-icon">⚗️</div>
-      <div class="skill-name">Coffee Brewing</div>
-      <div class="skill-bar"><div class="skill-fill" style="--pct:100%"></div></div>
+    <div class="training-card fade-in">
+      <div class="training-icon">🍽️</div>
+      <div class="training-title">Food & Drink Pairing</div>
+      <div class="training-desc">Formal training in harmonizing food and beverages — matching wine, spirits, coffee, and tea with diverse cuisine styles to elevate the dining experience.</div>
     </div>
-    <div class="skill-card" data-pct="90%">
-      <div class="skill-icon">📦</div>
-      <div class="skill-name">Inventory Management</div>
-      <div class="skill-bar"><div class="skill-fill" style="--pct:90%"></div></div>
+    <div class="training-card fade-in">
+      <div class="training-icon">🛡️</div>
+      <div class="training-title">Beverage Safety Training</div>
+      <div class="training-desc">Certified in responsible alcohol service, hygiene standards, allergen awareness, and safe beverage handling across all categories.</div>
     </div>
-    <div class="skill-card" data-pct="95%">
-      <div class="skill-icon">🔬</div>
-      <div class="skill-name">Quality Control</div>
-      <div class="skill-bar"><div class="skill-fill" style="--pct:95%"></div></div>
-    </div>
-    <div class="skill-card" data-pct="85%">
-      <div class="skill-icon">💻</div>
-      <div class="skill-name">Digital Inventory Systems</div>
-      <div class="skill-bar"><div class="skill-fill" style="--pct:85%"></div></div>
-    </div>
-    <div class="skill-card" data-pct="90%">
-      <div class="skill-icon">👥</div>
-      <div class="skill-name">Workshops & Training</div>
-      <div class="skill-bar"><div class="skill-fill" style="--pct:90%"></div></div>
-    </div>
-    <div class="skill-card" data-pct="92%">
-      <div class="skill-icon">🎯</div>
-      <div class="skill-name">Team Leadership</div>
-      <div class="skill-bar"><div class="skill-fill" style="--pct:92%"></div></div>
+    <div class="training-card fade-in">
+      <div class="training-icon">🍵</div>
+      <div class="training-title">Tea & Coffee Training</div>
+      <div class="training-desc">Professional training in tea varieties (green, black, oolong, herbal) and advanced coffee techniques — extraction, brewing methods, and sensory evaluation.</div>
     </div>
   </div>
 </section>
 
 <!-- EDUCATION -->
 <section id="education">
-  <div class="section-divider">
-    <div class="divider-line"></div>
-    <span class="divider-label">04 / Education</span>
-    <div class="divider-line"></div>
-  </div>
+  <div class="section-divider"><div class="divider-line"></div><span class="divider-label">05 / Education</span><div class="divider-line"></div></div>
   <h2 class="section-title fade-in">Foundations of<br><em>mastery</em></h2>
   <div class="edu-card fade-in">
     <div class="edu-year">2019</div>
     <div class="edu-info">
       <h3>Diploma in Hospitality Management</h3>
       <div class="edu-inst">BPXI · Kathmandu, Nepal · May 2017 – Jul 2019</div>
-      <p style="margin-top:1rem; color:var(--steam); font-size:0.9rem; line-height:1.7;">A comprehensive two-year program covering all facets of hospitality operations — from food and beverage service to event management and front-of-house standards — providing the professional foundation for an international hospitality career.</p>
+      <p style="margin-top:1rem;color:var(--steam);font-size:0.9rem;line-height:1.7;">A comprehensive two-year program covering all facets of hospitality operations — food and beverage service, event management, front-of-house standards — providing the professional foundation for an international career.</p>
     </div>
   </div>
 </section>
 
 <!-- CONTACT -->
 <section id="contact">
-  <div class="section-divider">
-    <div class="divider-line"></div>
-    <span class="divider-label">05 / Contact</span>
-    <div class="divider-line"></div>
-  </div>
+  <div class="section-divider"><div class="divider-line"></div><span class="divider-label">06 / Contact</span><div class="divider-line"></div></div>
   <h2 class="section-title fade-in">Let's brew<br>something <em>together</em></h2>
   <div class="contact-layout">
     <div class="fade-in">
-      <p>Whether you're looking for a passionate barista, a skilled beverage supervisor, or a coffee consultant — I'd love to connect. Available for opportunities across the UAE and internationally.</p>
+      <p>Whether you're looking for a passionate barista, a skilled beverage supervisor, or a knowledgeable wine & spirits professional — I'd love to connect. Based in Bhaktapur, Nepal and available for opportunities internationally.</p>
       <div class="contact-links">
-        <a href="mailto:Yognil1995@gmail.com" class="contact-link">
-          <div class="contact-link-icon">✉</div>
-          Yognil1995@gmail.com
-        </a>
-        <a href="tel:9701149239" class="contact-link">
-          <div class="contact-link-icon">📞</div>
-          9701149239
-        </a>
-        <div class="contact-link" style="cursor:default">
-          <div class="contact-link-icon">📍</div>
-          Bhaktapur, Nepal · Dubai, UAE
-        </div>
+        <a href="mailto:Yognil1995@gmail.com" class="contact-link"><div class="contact-link-icon">✉</div>Yognil1995@gmail.com</a>
+        <a href="tel:9701149239" class="contact-link"><div class="contact-link-icon">📞</div>9701149239</a>
+        <div class="contact-link" style="cursor:default"><div class="contact-link-icon">📍</div>Bhaktapur, Nepal</div>
       </div>
     </div>
     <div class="fade-in">
       <div class="contact-form">
-        <div class="form-group">
-          <label>Your Name</label>
-          <input type="text" placeholder="John Smith">
-        </div>
-        <div class="form-group">
-          <label>Email Address</label>
-          <input type="email" placeholder="john@example.com">
-        </div>
-        <div class="form-group">
-          <label>Message</label>
-          <textarea placeholder="Tell me about the opportunity..."></textarea>
-        </div>
-        <button class="btn-primary" onclick="handleSend()" style="width:100%;padding:1rem;font-size:0.75rem;border:none;">Send Message</button>
+        <div class="form-group"><label>Your Name</label><input type="text" placeholder="John Smith"></div>
+        <div class="form-group"><label>Email Address</label><input type="email" placeholder="john@example.com"></div>
+        <div class="form-group"><label>Message</label><textarea placeholder="Tell me about the opportunity..."></textarea></div>
+        <button class="btn-primary" onclick="handleSend()" style="width:100%;padding:1rem;font-size:0.75rem;border:none;cursor:none;">Send Message</button>
         <p class="form-note" id="form-note" style="display:none">✓ Message sent — I'll be in touch soon!</p>
       </div>
     </div>
@@ -934,53 +475,97 @@
 </section>
 
 <footer>
-  <span class="footer-copy">© 2025 Anil Gurung · Beverage Specialist</span>
+  <span class="footer-copy">© 2025 Anil Gurung · Beverage Specialist · Bhaktapur, Nepal</span>
   <a href="#hero" class="footer-scroll">↑ Back to top</a>
 </footer>
 
 <script>
-  // Custom cursor
+  // Cursor
   const cursor = document.getElementById('cursor');
   const ring = document.getElementById('cursorRing');
-  let mx = 0, my = 0, rx = 0, ry = 0;
-  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
-  function animCursor() {
-    cursor.style.transform = `translate(${mx-5}px, ${my-5}px)`;
-    rx += (mx - rx) * 0.12;
-    ry += (my - ry) * 0.12;
-    ring.style.transform = `translate(${rx-18}px, ${ry-18}px)`;
+  let mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+  function animCursor(){
+    cursor.style.transform=`translate(${mx-5}px,${my-5}px)`;
+    rx+=(mx-rx)*0.12; ry+=(my-ry)*0.12;
+    ring.style.transform=`translate(${rx-18}px,${ry-18}px)`;
     requestAnimationFrame(animCursor);
   }
   animCursor();
-  document.querySelectorAll('a, button, input, textarea').forEach(el => {
-    el.addEventListener('mouseenter', () => { ring.style.width='54px'; ring.style.height='54px'; ring.style.opacity='1'; });
-    el.addEventListener('mouseleave', () => { ring.style.width='36px'; ring.style.height='36px'; ring.style.opacity='0.6'; });
+  document.querySelectorAll('a,button,input,textarea').forEach(el=>{
+    el.addEventListener('mouseenter',()=>{ring.style.width='54px';ring.style.height='54px';ring.style.opacity='1';});
+    el.addEventListener('mouseleave',()=>{ring.style.width='36px';ring.style.height='36px';ring.style.opacity='0.6';});
   });
 
+  // Floating CV button — appears after 3s
+  setTimeout(() => {
+    document.getElementById('cvFloat').classList.add('show');
+  }, 3000);
+
+  function downloadCV(e) {
+    e.preventDefault();
+    // Create a simple text CV for download
+    const cvContent = `ANIL GURUNG
+Beverage Specialist & Barista
+Bhaktapur, Nepal | Yognil1995@gmail.com | 9701149239
+
+EXPERIENCE
+─────────────────────────────────
+Coffee Beverage Maker — The Arts Club Dubai (Sep 2024–Present)
+Supervisor Beverage Maker — Palma Café & OT Cookies, Dubai (Mar 2022–Aug 2024)
+Beverage Maker — Place Café, Dubai (Mar 2021–Feb 2022)
+Service Captain — LOD Club, Nepal (Mar 2019–Feb 2020)
+Service Captain — Calm Resto and Bar, Nepal (Jan 2018–Feb 2019)
+Waiter — Park Royal Hotel, Singapore (Sep 2017–Feb 2018)
+Kitchen Trainee — Solti Crown Plaza, Kathmandu (Jan 2017–Mar 2017)
+
+EDUCATION
+─────────────────────────────────
+Diploma in Hospitality Management — BPXI, Kathmandu (2017–2019)
+
+TRAINING & CERTIFICATIONS
+─────────────────────────────────
+• Sommelier Studies (Wine)
+• Sake & Chinese Spirits (Baijiu)
+• Tequila Masterclass
+• Food & Drink Pairing
+• Beverage Safety Training
+• Tea & Coffee Training
+
+SKILLS
+─────────────────────────────────
+Coffee Preparation · Latte Art · Wine Knowledge · Customer Service
+Team Leadership · Inventory Management · Quality Control
+Food & Drink Pairing · Training & Mentoring
+
+LANGUAGES
+─────────────────────────────────
+English · Nepali · Hindi`;
+
+    const blob = new Blob([cvContent], {type:'text/plain'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = 'Anil-Gurung-CV.txt';
+    a.click(); URL.revokeObjectURL(url);
+  }
+
   // Scroll observer
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        // Skill bar animation
-        entry.target.querySelectorAll && entry.target.querySelectorAll('.skill-card').forEach(c => c.classList.add('animated'));
-      }
+  const observer = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting) entry.target.classList.add('visible');
     });
-  }, { threshold: 0.12 });
+  },{threshold:0.12});
+  document.querySelectorAll('.fade-in,.exp-item').forEach(el=>observer.observe(el));
 
-  document.querySelectorAll('.fade-in, .exp-item').forEach(el => observer.observe(el));
+  const skillObs = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting) e.target.classList.add('animated');});
+  },{threshold:0.3});
+  document.querySelectorAll('.skill-card').forEach(c=>skillObs.observe(c));
 
-  // Skill bars on scroll
-  const skillObs = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('animated'); });
-  }, { threshold: 0.3 });
-  document.querySelectorAll('.skill-card').forEach(c => skillObs.observe(c));
-
-  // Contact form
-  function handleSend() {
-    const note = document.getElementById('form-note');
-    note.style.display = 'block';
-    setTimeout(() => note.style.display = 'none', 5000);
+  function handleSend(){
+    const note=document.getElementById('form-note');
+    note.style.display='block';
+    setTimeout(()=>note.style.display='none',5000);
   }
 </script>
 </body>
